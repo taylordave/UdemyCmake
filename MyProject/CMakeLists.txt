@@ -13,4 +13,8 @@ project(
     LANGUAGES C CXX
 )
 
+add_library(Library STATIC my_lib.cc)
+
 add_executable(Executable main.cc)
+
+target_link_libraries(Executable PUBLIC Library)
