@@ -18,7 +18,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
 option(ENABLE_WARNINGS "Enable warnings" ON)
-option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
+option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" OFF)
+
+option(ENABLE_SANITIZE_ADDR "Enable address sanitizer" ON)
+option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitizer" ON)
 
 option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
 
@@ -32,6 +35,11 @@ include(Docs)
 
 if(ENABLE_WARNINGS)
     include(Warnings)
+endif()
+
+if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
+    include(Sanitizer)
+    add_sanitizer_flags()
 endif()
 
 FetchContent_Declare(

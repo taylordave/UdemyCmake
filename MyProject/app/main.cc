@@ -15,6 +15,9 @@ int main()
 
     // int i;       // used for testing out warnings
 
+    // char x[10];  // used for testing the address santizer
+    // x[11] = 1;
+
     std::cout << "JSON Lib Version:"
         << NLOHMANN_JSON_VERSION_MAJOR << "."
         << NLOHMANN_JSON_VERSION_MINOR << "."
