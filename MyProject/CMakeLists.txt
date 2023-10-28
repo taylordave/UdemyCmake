@@ -23,6 +23,8 @@ option(ENABLE_WARNINGS_AS_ERRORS "Enable warnings as errors" OFF)
 option(ENABLE_SANITIZE_ADDR "Enable address sanitizer" ON)
 option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitizer" ON)
 
+option(ENABLE_LTO "Enable link-time optimization" ON)
+
 option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
 
 set(LIBRARY_NAME Library)
@@ -35,6 +37,10 @@ include(Docs)
 
 if(ENABLE_WARNINGS)
     include(Warnings)
+endif()
+
+if(ENABLE_LTO)
+    include(LTO)
 endif()
 
 if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
